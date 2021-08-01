@@ -1,0 +1,326 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\usepackage{cancel}
+
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Peskin Solutions: Chapter 2}
+\author{Jinchen}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Problem 3.1}
+
+\noindent (a)
+
+\[
+    [L^i, L^j] = \frac{1}{4} \epsilon^{i l m} \epsilon^{j s t} [J^{l m}, J^{s t}] = \frac{i}{4} \epsilon^{i l m} \epsilon^{j s t} (g^{m s} J^{l t} - g^{l s} J^{m t} - g^{m t} J^{l s} + g^{l t} J^{m s})
+\]
+
+The four terms in the braket are equal after switching the indexes, and $g^{ms} = -1$ when $m = s \in \{1, 2, 3\}$ so we got
+
+\[
+    [L^i, L^j] = i \epsilon^{i l m} \epsilon^{j s t} g^{m s} J^{l t} = -i \epsilon^{m i l} \epsilon^{m t j} J^{l t} = -i (\delta_{i}^{t} \delta_{l}^{j} - \delta_{i}^{j} \delta_{l}^{t}) J^{lt} = -i J^{j i}
+\]
+
+\[
+    i \epsilon^{ijk} L^k = \frac{i}{2} \epsilon^{i j k} \epsilon^{k l m} J^{lm} = \frac{i}{2} (J^{ij} - J^{ji}) = -i J^{j i}   
+\]
+
+\[
+    [L^i, L^j] = i \epsilon^{ijk} L^k  
+\]
+
+\[
+    [K^i, K^j] = [J^{0 i}, J^{0, j}] = i (g^{i 0} J^{0 j} - g^{0 0} J^{i j} - g^{i j} J^{0 0} + g^{0 j} J^{i 0}) = -i J^{i j} = -i \epsilon^{ijk} L^{k}   
+\]
+
+\[
+    [L^i, K^j] = \frac{1}{2} \epsilon_{i m n} [J^{m n}, J^{0 j}] = \frac{1}{2} \epsilon_{i m n} (g^{n j} K^m - g^{m j} K^n) = i \epsilon_{i j k} K^{k}   
+\]
+
+\[
+    [J_+^i, J_-^j] = \frac{1}{4} ([L^i, L^j] - i [L^i, K^j] + i [K^i, L^j] + [K^i, K^j]) = 0    
+\]
+
+\[
+    [J_+^i, J_+^j] = \frac{1}{4} ([L^i, L^j] + i [L^i, K^j] + i [K^i, L^j] - [K^i, K^j]) = \frac{1}{2} (i \epsilon^{i j k} L^k - \epsilon^{i j k} K^k) = i \epsilon^{i j k} J_+^k    
+\]
+
+\[
+    [J_+^i, J_+^j] = i \epsilon^{i j k} J_-^k    
+\]
+
+~\\
+\noindent (b)
+
+Once we get the expression of $\hat{\vec{L}}$ and $\hat{\vec{K}}$, we get a set of generators $J^{\mu \nu}$ of Lorentz group, also we get $\hat{\vec{J}_+}$ and $\hat{\vec{J}_-}$, each of them is a set of generators of rotation group.
+
+when $(j_+, j_-) = (\frac{1}{2}, 0)$, $\hat{J_+^i} = \frac{\sigma^i}{2}$ and $\hat{J_-^i} = 0$
+
+\[
+    L^{i}=\left(J_{+}^{i}+J_{-}^{i}\right)=\frac{1}{2} \sigma^{i}    
+\]
+
+\[
+    K^{i}=-\mathrm{i}\left(J_{+}^{i}-J_{-}^{i}\right)=-\frac{\mathrm{i}}{2} \sigma^{i}    
+\]
+
+\[
+    \phi \to (1 - i \theta^i \frac{\sigma^i}{2} - \beta^i \frac{\sigma^i}{2})    
+\]
+
+This is the transformation of $\psi_L$, eq.(3.37).
+
+
+~\\
+\noindent (c)
+
+Need more thinking ... 
+
+
+\section{Problem 3.2}
+
+We know that $\sigma^{\mu \nu} = \frac{i}{2}[\gamma^{\mu}, \gamma^{\nu}]$, so,
+
+\[
+    i \sigma^{\mu \nu} q_{\nu} = (g^{\mu \nu} - \gamma^{\mu} \gamma^{\nu}) (p' - p)_{\nu} = (p' - p)^{\mu} - (2 g^{\mu \nu} - \gamma^{\nu} \gamma^{\mu}) p'_{\nu} + \gamma^{\mu} \gamma^{\nu} p_{\nu} = -(p' + p)^{\mu} + \cancel{p'} \gamma^{\mu} + \gamma^{\mu} \cancel{p}
+\]
+
+According to the Dirac equation,
+
+\[
+    \bar{u}(p') [\cancel{p'} \gamma^{\mu} + \gamma^{\mu} \cancel{p}] u(p) = \bar{u}(p') [2m \gamma^{\mu}] u(p)
+\]
+
+
+\section{Problem 3.3}
+
+\noindent (a)
+\[
+    \cancel{k_0} u_{R0} = \cancel{k_0} \cancel{k_1} u_{L0} = \gamma^\mu k_{0 \mu} \gamma^{\nu} k_{1 \nu} u_{L0} = \frac{1}{2} \{\gamma^\mu, \gamma^\nu\} k_{0 \mu} k_{1 \nu} u_{L0} = g^{\mu \nu} k_{0 \mu} k_{1 \nu} u_{L0} = 0    
+\]
+
+\[
+    \cancel{p} u_{L}(p)=\frac{1}{\sqrt{2 p \cdot k_{0}}} \cancel{p} \cancel{p} u_{R 0}=\frac{1}{\sqrt{2 p \cdot k_{0}}} p^{2} u_{R 0}=0    
+\]
+
+for the same reason,
+
+\[
+    \cancel{p} u_{R}(p) = 0    
+\]
+
+~\\
+\noindent (b)
+
+We know that $u_{L0}$ is the left-handed spinor for a fermion with momentum $k_0$, so $m=0$ and $\cancel{k_0}u_{L0} = 0$.
+
+\[
+    k_{0} u_{L 0}=0 \quad \Rightarrow \quad\left(\begin{array}{cccc}
+        0 & 0 & 0 & 0 \\
+        0 & 0 & 0 & 2 E \\
+        2 E & 0 & 0 & 0 \\
+        0 & 0 & 0 & 0
+        \end{array}\right) u_{L 0}=0    
+\]
+
+\[
+    u_{L 0} = (0, \sqrt{2E}, 0, 0)^{T}
+\]
+
+\[
+    u_{R 0} = (0, 0, -\sqrt{2E}, 0)^{T}
+\]
+
+We have $u_{L}(p) = \frac{1}{\sqrt{2 p cdot k_0}} \cancel{p} u_{R0}$ and $u_{R}(p) = \frac{1}{\sqrt{2 p cdot k_0}} \cancel{p} u_{L0}$
+
+\[
+    u_{L}(p) = \frac{1}{\sqrt{p_{0}+p_{3}}}\left(\begin{array}{c}
+        -\left(p_{0}+p_{3}\right) \\
+        -\left(p_{1}+i p_{2}\right) \\
+        0 \\
+        0
+        \end{array}\right)
+\]
+
+\[
+    u_{R}(p)=\frac{1}{\sqrt{p_{0}+p_{3}}}\left(\begin{array}{c}
+        0 \\
+        0 \\
+        -p_{1}+i p_{2} \\
+        p_{0}+p_{3}
+        \end{array}\right)
+\]
+
+~\\
+\noindent (c)
+
+\[
+    s(p, q)=\bar{u}_{R}(p) u_{L}(q)=\frac{\left(p_{1}+i p_{2}\right)\left(q_{0}+q_{3}\right)-\left(q_{1}+i q_{2}\right)\left(p_{0}+p_{3}\right)}{\sqrt{\left(p_{0}+p_{3}\right)\left(q_{0}+q_{3}\right)}}
+\]
+
+\[
+    t(p, q)=\bar{u}_{L}(p) u_{R}(q)=\frac{\left(q_{1}-i q_{2}\right)\left(p_{0}+p_{3}\right)-\left(p_{1}-i p_{2}\right)\left(q_{0}+q_{3}\right)}{\sqrt{\left(p_{0}+p_{3}\right)\left(q_{0}+q_{3}\right)}}
+\]
+
+So $s(p, q) = -s(q, p)$ and $t(p, q) = (s(q, p))^*$
+
+
+\section{Problem 3.4}
+
+\noindent (a)
+
+\section{Problem 3.5}
+\noindent (a)
+
+\[
+    \delta\left(\partial_{\mu} \phi^{*} \partial^{\mu} \phi\right) = - \mathrm{i}\left(\partial_{\mu} \chi^{*} \sigma^{2} \epsilon^{\dagger}\right) \partial^{\mu} \phi+\left(\partial_{\mu} \phi^{*}\right)\left(-\mathrm{i} \epsilon^{T} \sigma^{2} \partial^{\mu} \chi\right)
+\]
+
+\[
+    \delta\left(F^{*} F\right)=\mathrm{i}\left(\partial_{\mu} \chi^{\dagger}\right) \bar{\sigma}^{\mu} \epsilon F-\mathrm{i} F^{*} \epsilon^{\dagger} \bar{\sigma}^{\mu} \partial_{\mu} \chi
+\]
+
+
+~\\
+\noindent (b)
+
+\[
+    \delta(\Delta \mathcal{L})=-\mathrm{i} m \epsilon^{T} \sigma^{2} \chi F-\mathrm{i} m \phi \epsilon^{\dagger} \bar{\sigma}^{\mu} \partial_{\mu} \chi+\frac{1}{2} \mathrm{i} m\left[\epsilon^{T} F+\epsilon^{\dagger}\left(\sigma^{2}\right)^{T}\left(\sigma^{\mu}\right)^{T} \partial_{\mu} \phi\right] \sigma^{2} \chi
+\]
+\[
+    +\frac{1}{2} \mathrm{i} m \chi^{T} \sigma^{2}\left[\epsilon F+\sigma^{\mu}\left(\partial_{\mu} \phi\right) \sigma^{2} \epsilon^{*}\right]+\mathrm{c.c}
+\]
+
+
+\section{Problem 3.6}
+
+\noindent (a)
+We need to find the normalization coefficients of all 16 elements.
+
+\[
+    tr[\gamma^0 \gamma^0] = 4
+\]
+
+\[
+    tr[\gamma^i \gamma^i] = -4
+\]
+
+So, there are $\gamma^0$ and $i \gamma^i$ in the $\Gamma^A$
+
+~\\
+\noindent (b)
+
+Multiply equation at left by $(\bar{u}_2 \Gamma^F u_3)(\bar{u}_4 \Gamma^E u_1)$.
+
+Also, notice that $\bar{u}_i \Gamma u_j$ is a $1\times 1$ number, so the order can be changed as you want; and $(\bar{u}_i \Gamma u_i) = {tr} (\bar{u}_i \Gamma u_i) = {tr} (\Gamma)$. With these equations, we can derive the equation we need.
+
+~\\
+\noindent (c)
+
+Use the results of (b), we can get it easily.
+
+
+
+\section{Problem 3.7}
+
+\noindent (a)
+
+\[
+    P \bar{\psi}(t, \mathbf{x}) \sigma^{\mu \nu} \psi(t, \mathbf{x}) P=\frac{\mathrm{i}}{2} \bar{\psi}(t,-\mathbf{x}) \gamma^{0}\left[\gamma^{\mu}, \gamma^{\nu}\right] \gamma^{0} \psi(t,-\mathbf{x})
+\]
+
+\[
+    \gamma^0 [\gamma^0, \gamma^i] \gamma^0 = - [\gamma^0, \gamma^i]
+\]
+
+\[
+    \gamma^0 [\gamma^i, \gamma^j] \gamma^0 = [\gamma^i, \gamma^j]    
+\]
+
+Notice that $\hat{T} \gamma^{\mu} \hat{T} = (\gamma^{\mu})^*$.
+
+
+~\\
+\noindent (b)
+
+\[
+    \phi(\vec{x}, t) = e^{i H t} \phi(\vec{x}) e^{-i H t} = \left.\int \frac{d^{3} p}{(2 \pi)^{3}} \frac{1}{\sqrt{2 E_{\vec{p}}}}\left(a_{\vec{p}} e^{-i p \cdot x}+b_{\vec{p}}^{\dagger} e^{i p \cdot x}\right)\right|_{p^{0}=E_{\vec{p}}}    
+\]
+
+\[
+    P a_{\vec{p}} P = a_{\vec{-p}}
+\]
+
+So,
+
+\[
+    P \phi(\vec{x}, t) P = \int \frac{d^{3} p}{(2 \pi)^{3}} \frac{1}{\sqrt{2 E_{\vec{p}}}}\left(a_{-\vec{p}} e^{-i p \cdot x}+b_{-\vec{p}}^{\dagger} e^{i p \cdot x}\right) |_{p^{0}=E_{\vec{p}}}
+\]
+
+Replace the variable $-\vec{p}$ with $\vec{p}$,
+
+\[
+    P \phi(\vec{x}, t) P = \int \frac{d^{3} p}{(2 \pi)^{3}} \frac{1}{\sqrt{2 E_{\vec{p}}}}\left(a_{\vec{p}} e^{-i (p_0 t + \vec{p} \cdot \vec{x})}+b_{\vec{p}}^{\dagger} e^{i (p_0 t + \vec{p} \cdot \vec{x})}\right) |_{p^{0}=E_{\vec{p}}} = \phi(-\vec{x}, t)
+\]
+
+\[
+    C \phi(x) C = \int \frac{d^{3} p}{(2 \pi)^{3}} \frac{1}{\sqrt{2 E_{\vec{p}}}} (a^{\dagger}_{\vec{p}} e^{i p \cdot x} + b_{\vec{p}} e^{-i p \cdot x}) = \phi^{*}(x)
+\]
+
+\end{document}

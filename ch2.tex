@@ -1,0 +1,287 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Peskin Solutions: Chapter 2}
+\author{Jinchen}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Problem 2.1}
+
+\noindent (a)
+
+We know the Euler-Lagrange eq. as below,
+
+\[
+    \mathcal{L} = - \frac{1}{4} \mathit{F}_{\rho \sigma} \mathit{F}^{\rho \sigma}
+\]
+
+\[
+    \frac{\partial \mathcal{L}}{\partial A_{\nu}} = \partial_{\mu}( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu} A_{\nu})} )    
+\]
+
+And obviously,
+
+\[
+    \frac{\partial \mathcal{L}}{\partial A_{\nu}} = 0
+\]
+
+\[
+    \frac{\partial \mathit{F}_{\rho \sigma}}{\partial (\partial_{\mu} A_{\nu})} = \delta^{\mu}_{\rho} \delta^{\nu}_{\sigma} - \delta^{\mu}_{\sigma} \delta^{\nu}_{\rho}
+\]
+
+So,
+
+\[
+    \partial_{\mu}( \frac{\partial \mathcal{L}}{\partial (\partial_{\mu} A_{\nu})} ) = -\frac{1}{4} \partial_{\mu}( 2 \mathit{F}^{\mu \nu} - 2 \mathit{F}^{\nu \mu} ) = - \partial_{\mu} \mathit{F}^{\mu \nu} = 0
+\]
+
+The above eq. are Maxwell's equations, when $\mu = 0$, we got $\nabla \cdot \vec{E} = 0$, when $\mu = i$, we got $\partial_t \vec{E} = \nabla \times \vec{B}$.
+
+~\\
+
+\noindent (b)
+
+We know the energy-momentum tensor can be calculated as,
+
+\[
+    T^{\mu}{ }_{\nu} \equiv \frac{\partial \mathcal{L}}{\partial\left(\partial_{\mu} \phi\right)} \partial_{\nu} \phi-\mathcal{L} \delta^{\mu}{ }_{\nu}    
+\]
+
+Here we use $A_{\lambda}$ as $\phi$ and from (a) we know $\frac{\partial \mathcal{L}}{\partial(\partial_{\mu} \phi)} = - \mathit{F}^{\mu \lambda}$.
+
+So,
+
+\[
+    T^{\mu \nu} = \frac{1}{4}\mathit{F}_{\rho \sigma} \mathit{F}^{\rho \sigma} g^{\mu \nu} - \mathit{F}^{\mu \lambda} \partial^{\nu} A_{\lambda}
+\]
+
+This expression is not symmetric under the exchange of $\mu$ and $\nu$, so we add another term.
+
+\[
+    \hat{T}^{\mu \nu} = \frac{1}{4}\mathit{F}_{\rho \sigma} \mathit{F}^{\rho \sigma} g^{\mu \nu} - \mathit{F}^{\mu \lambda} \partial^{\nu} A_{\lambda} + \partial_{\lambda} (\mathit{F}^{\mu \lambda} A^{\nu})   
+\]
+
+From (a) we know $\partial_{\lambda} \mathit{F}^{\mu \lambda} = 0$, so we got,
+
+\[
+    \hat{T}^{\mu \nu} = \frac{1}{4}\mathit{F}_{\rho \sigma} \mathit{F}^{\rho \sigma} g^{\mu \nu} + \mathit{F}^{\mu \lambda} \mathit{F}_{\lambda}{ }^{\nu}
+\]
+
+Now it is symmetric under the exchange of $\mu$ and $\nu$.
+
+\[
+    \hat{T}^{00} = \left(-\frac{1}{2} F^{0 i} F^{0 i}+\frac{1}{4} F^{i j} F^{i j}\right)+F^{0 i} F^{0 i}    
+\]
+
+\[
+    \mathit{F}_{\rho \sigma} \mathit{F}^{\rho \sigma} = 2(\vec{B}^2 - \vec{E}^2)  
+\]
+
+\[
+    \hat{T}^{00} = \frac{1}{2}(\vec{B}^2 + \vec{E}^2) 
+\]
+
+And, 
+
+\[
+    \hat{T}^{0i} = \mathit{F}^{0 \lambda} \mathit{F}_{\lambda}{ }^{i} = - \mathit{F}^{0 j} \mathit{F}^{ji}
+\]
+
+
+\section{Problem 2.2}
+
+\noindent (a)
+
+From the expression of action, we know that $\mathcal{L} = \partial_{\mu} \phi^* \partial^{\mu} \phi - m^2 \phi^* \phi$.
+
+So,
+
+\[
+    \pi = \frac{\partial \mathcal{L}}{\partial(\partial_t \phi)} = \partial_t \phi^*    
+\]
+
+\[
+    \pi^* = \frac{\partial \mathcal{L}}{\partial(\partial_t \phi^*)} = \partial_t \phi    
+\]
+
+And the canonical commutation relations are as below,
+
+\[
+    [\phi(\vec{x}), \pi(\vec{y})] = [\phi(t, \vec{x}), \pi(t, \vec{y})] = i \delta^{(3)} (\vec{x}-\vec{y})    
+\]
+
+Heisenberg equation of motion is,
+
+\[
+    i \frac{\partial}{\partial t} \mathcal{O} = [\mathcal{O}, H]    
+\]
+
+So,
+
+\[
+    i \frac{\partial}{\partial t} \phi(x) = [\phi(t, \vec{x}), H(t, \vec{x}')] = \int d^3 x' [\phi(t, \vec{x}), \pi^*(t, \vec{x}')\pi(t, \vec{x}')] = i \pi^*(x)
+\]
+
+\[
+    i \frac{\partial}{\partial t} \pi^*(x) = \int d^3 x' ([\pi^*, \nabla' \phi^* \cdot \nabla' \phi] + m^2 [\pi^*, \phi^* \phi])    
+\]
+
+And we noticed that $[\pi^*, \nabla' \phi^* \cdot \nabla' \phi] = [\pi^*, \nabla' \phi^*] \cdot \nabla' \phi = \nabla' [\pi^*, \phi^*] \cdot \nabla' \phi$,
+
+\[
+    i \frac{\partial}{\partial t} \pi^*(x) = (-i) \int d^3 x' \{ \nabla' \delta^{(3)}(\vec{x} - \vec{x}') \cdot \nabla' \phi(t, \vec{x}') \} - i m^2 \phi(x)
+\]
+
+\[
+    \nabla' \delta^{(3)}(\vec{x} - \vec{x}') \cdot \nabla' \phi(t, \vec{x}') = \nabla' \{ \delta^{(3)}(\vec{x} - \vec{x}') \cdot \nabla' \phi(t, \vec{x}') \} - \delta^{(3)}(\vec{x} - \vec{x}') \nabla'^2 \phi(t, \vec{x}')
+\]
+
+Because $\delta^{(3)}(\vec{x} - \vec{x}') = 0$ when $\vec{x}'$ goes to the boundary at infinity, after integral the first term was cancelled, then we got,
+
+\[
+    i \frac{\partial}{\partial t} \pi^*(x) = i (\nabla^2 - m^2) \phi(x)
+\]
+
+So we got,
+
+\[
+    \frac{\partial^2}{\partial^2 t} \phi(x) = (\nabla^2 - m^2) \phi(x)   
+\]
+
+\[
+    (\partial^2 + m^2) \phi(x) = 0  
+\]
+
+This is the K-G equation.
+
+~\\
+
+\noindent (b)
+
+From (a) we know that $\phi(x)$ is a solution of K-G equation, and noticed that,
+
+\[
+    \partial^2 e^{\pm i p \cdot x} = (\partial_t^2 - \nabla^2) e^{\pm (iEt - i \vec{p}\cdot \vec{x})} = (-E^2 + |\vec{p}|^2) e^{\pm i p \cdot x}
+\]
+
+So $\phi(x)$ is the linear combination of $e^{\pm i p \cdot x}$.
+
+On the other hand, 
+
+\[
+    \phi(\vec{x})=\int \frac{d^{3} p}{(2 \pi)^{3}} \frac{1}{\sqrt{2 E_{\vec{p}}}} (a_{\vec{p}} e^{i \vec{p} \cdot \vec{x}}+a_{\vec{p}}^{\dagger} e^{-i \vec{p} \cdot \vec{x}})    
+\]
+
+\[
+    e^{i H t} a_{\vec{p}} e^{-i H t}=a_{\vec{p}} e^{-i E_{\vec{p}} t}    
+\]
+
+\[
+    e^{i H t} a^{\dagger}_{\vec{p}} e^{-i H t}=a^{\dagger}_{\vec{p}} e^{-i E_{\vec{p}} t}    
+\]
+
+Here the operators for positive and negative frequence are no need to be conjugate with each other, so we have,
+
+\[
+    \phi(\vec{x}, t) = e^{i H t} \phi(\vec{x}) e^{-i H t} = \left.\int \frac{d^{3} p}{(2 \pi)^{3}} \frac{1}{\sqrt{2 E_{\vec{p}}}}\left(a_{\vec{p}} e^{-i p \cdot x}+b_{\vec{p}}^{\dagger} e^{i p \cdot x}\right)\right|_{p^{0}=E_{\vec{p}}}    
+\]
+
+\[
+    \pi^*(x) = \frac{\partial}{\partial t} \phi(x) = i \left.\int \frac{d^{3} p}{(2 \pi)^{3}} \frac{\sqrt{E_{\vec{p}}}}{\sqrt{2}}\left( - a_{\vec{p}} e^{-i p \cdot x}+b_{\vec{p}}^{\dagger} e^{i p \cdot x}\right)\right|_{p^{0}=E_{\vec{p}}}       
+\]
+
+\[
+    \phi^* = \phi^{\dagger}    
+\]
+
+So, we can use $a_{\vec{p}}$ and $b_{\vec{p}}$ to express $H$.
+
+\[
+    H = \int \frac{d^3 p}{(2\pi)^3} \frac{E_{\vec{p}}}{2} ( a_{\vec{p}} a^{\dagger}_{\vec{p}} + b^{\dagger}_{\vec{p}} b_{\vec{p}} + a^{\dagger}_{\vec{p}} a_{\vec{p}} + b_{\vec{p}} b^{\dagger}_{\vec{p}} ) = \int \frac{d^3 p}{(2\pi)^3} E_{\vec{p}} (b^{\dagger}_{\vec{p}} b_{\vec{p}} + a^{\dagger}_{\vec{p}} a_{\vec{p}}) + \int d^3 p E_{\vec{p}} \delta^{(3)}(0)
+\]
+
+~\\
+
+\noindent (c)
+
+\[
+    Q = \frac{1}{2} \int \frac{d^3 p}{(2\pi)^3} (a^{\dagger}_{\vec{p}}a_{\vec{p}} - b_{\vec{p}}b^{\dagger}_{\vec{p}}) = \frac{1}{2} \int \frac{d^3 p}{(2\pi)^3} (a^{\dagger}_{\vec{p}}a_{\vec{p}} - b^{\dagger}_{\vec{p}}b_{\vec{p}}) - \frac{1}{2} \int d^3 p \delta^{(3)}(0)
+\]
+
+
+~\\
+
+\noindent (d)
+
+Waiting for more thinking...
+
+
+\section{Problem 2.3}
+
+We know that the form of $D(x-y)$ is invarient under the Lorentz transformations, so we can assume $(x-y)^\mu = (0, 0, 0, r)$.
+
+\[
+    D(x-y) = \int \frac{p^2 Sin(\theta) dp d\theta d\phi }{(2\pi)^3} \frac{1}{2 \sqrt{m^2 + p^2}} e^{i p r Cos(\theta)} = \frac{1}{8 \pi^2} \int^{\infty}_{0} dp \frac{p^2}{\sqrt{m^2 + p^2}} \int^{\pi}_{0} d\theta\ Sin(\theta)\ e^{i p r Cos(\theta)}
+\]
+
+\[
+    D(x-y) = \frac{1}{4\pi^2 r} \int^{\infty}_{0} dp \frac{p}{\sqrt{m^2 + p^2}}\ Sin(pr)    
+\]
+
+\end{document}
