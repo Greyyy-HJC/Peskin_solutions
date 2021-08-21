@@ -1,0 +1,370 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\usepackage{cancel}
+
+\usepackage{color}
+
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Peskin Solutions: Chapter 4}
+\author{Jinchen}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Problem 4.1}
+
+\noindent (a)
+
+\[
+    M =  _{in}<0|0>_{out} = \lim_{T \to \infty(1-i\epsilon)} <0|e^{-i H (2T)}|0>        
+\]
+
+\[
+    \lim_{T \to \infty(1-i\epsilon)} e^{-i H (2T)}|0> = \lim_{T \to \infty(1-i\epsilon)} \Sigma_{n} e^{-i E_n (2T)} |n><n|0> \approx \lim_{T \to \infty(1-i\epsilon)} e^{-i E_0 (2T)} |\Omega><\Omega|0>
+\]
+
+\[
+    M = \lim_{T \to \infty(1-i\epsilon)} e^{-i E_0 (2T)} |<\Omega|0>|^2    
+\]
+
+From P.87, we have
+
+\[
+    1=\langle\Omega \mid \Omega\rangle=\left(|\langle 0 \mid \Omega\rangle|^{2} e^{-i E_{0}(2 T)}\right)^{-1}\left\langle 0\left|U\left(T, t_{0}\right) U\left(t_{0},-T\right)\right| 0\right\rangle    
+\]
+
+So,
+
+\[
+    M = \lim_{T \to \infty(1-i\epsilon)} \left\langle 0\left|U\left(T, t_{0}\right) U\left(t_{0},-T\right)\right| 0\right\rangle 
+\]
+
+\[
+    P(0) = |M|^2 = \lim_{T \to \infty(1-i\epsilon)} \left|\left\langle 0\left|T \exp \left\{-i \int \mathrm{d}^{4} x \mathcal{H}_{\mathrm{int}}\right\}\right| 0\right\rangle\right|^{2}    
+\]
+
+~\\
+\noindent (b)
+
+In the expansion of the exponential, those terms propotional to $j$, $j^3$ ... will vanish because they cannot contract completely, so the expansion is
+
+\[
+    1 - \frac{1}{2} \int d^4 x j(x) \phi(x) \int d^4 y j(y) \phi(y) + O(j^4)
+\]
+
+\[
+    M = 1 - \frac{1}{2} \int d^4 x \int d^4 y j(x) j(y) <0|T{\phi(x) \phi(y)}|0> + O(j^4)
+\]
+
+Assume $x^0 > y^0$, 
+
+\[
+    <0|T{\phi(x) \phi(y)}|0> = \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 E_p} e^{-ip\cdot(x-y)}
+\]
+
+\[
+    M = 1 - \frac{1}{2} \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 E_p} \tilde{j}(p) \tilde{j}(-p) + O(j^4)   
+\]
+
+If $\tilde{j}(p) \tilde{j}(-p) = |\tilde{j}(p)|^2$
+
+\[
+    P(0) = |M|^2 = 1 - \int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 E_p} |\tilde{j}(p)|^2 + O(j^4)    
+\]
+
+So, $\lambda = <N>$.
+
+~\\
+\noindent (c)
+
+Feynman diagrams are some line segments.
+
+~\\
+\noindent (d)
+
+\[
+    P = | _{out}<\vec{k}|0>_{in}|^2
+\]
+
+\[
+    M = 1 + i \int d^4 x j(x) <\vec{k}|\phi(x)|0> = i \int d^4 x j(x) e^{ip \cdot x} = i \tilde{j}(p)    
+\]
+
+So, for one particle, the first term is
+
+\[
+    P = |M|^2 = |\tilde{j}(p)|^2    
+\]
+
+The n-th term is
+
+\[
+    \frac{(-1)^n i}{(2n+1)!} \int d^4 x_1 ... d^4 x_{2n+1} j(x_1)... j(x_{2n+1}) <\vec{k}|T\phi(x_1)\phi(x_2)...\phi(x_{2n+1})|0>    
+\]
+
+\[
+    = \frac{(-1)^n i}{(2n+1)!} (2n+1)(2n-1)...1 \int d^4 x_1 e^{ik\cdot x_1} j(x_1) (\int \frac{d^3 p}{(2\pi)^3} \frac{1}{2 E_{\vec{p}}} |\tilde{j}(p)|^2)^n     
+\]
+
+\[
+    = \frac{(-1)^n i}{2^n n!} \tilde{j}(k) \lambda^n    
+\]
+
+\[
+    P = \left|\sum_{n=0}^{\infty} \frac{(-\lambda / 2)^{n}}{n !} i \tilde{j}(k) \right|^{2} = |\tilde{j}(k)|^2 e^{-\lambda}    
+\]
+
+~\\
+\noindent (e)
+
+In the final state, different momentum distribution should be summed over the probabilities.
+
+\[
+    P = \frac{1}{n!} \int \frac{\mathrm{d}^{3} k_{1} \cdots \mathrm{d}^{3} k_{n}}{(2 \pi)^{3 n} 2^{n} E_{\mathbf{k}_{1}} \cdots E_{\mathbf{k}_{n}}} |\left\langle\mathbf{k}_{1} \cdots \mathbf{k}_{n}\left|T \exp \left\{i \int \mathrm{d}^{4} x j(x) \phi_{I}(x)\right\}\right| 0\right\rangle |^2    
+\]
+
+the $\frac{1}{n!}$ represents the symmetry of exchanging $\vec{k_i}$ and $\vec{k_j}$. 
+
+The first term of M is 
+
+\[
+    \frac{i^n}{n!} \int d^4 x_1 ... d^4 x_n j(x_1) ... j(x_n) <\vec{k_1}...\vec{k_n}|T\phi(x_1)...\phi(x_n)|0> = \frac{i^n}{n!} \tilde{j}(k_1) ... \tilde{j}(k_n)
+\]
+
+the (m+1)-th term of M is 
+
+\[
+    \frac{i^{n+2m}}{(n+2m)!} \frac{(n+2m)!}{2^m m!} \tilde{j}(k_1) ... \tilde{j}(k_n) \int \frac{d^3 p_1 ... d^3 p_m}{(2\pi)^{3m} 2^m E_{p_1} ... E_{p_m}} |\tilde{j}(p_1)|^2 ... |\tilde{j}(p_m)|^2    
+\]
+
+\[
+    = i^n\tilde{j}(k_1) ... \tilde{j}(k_n) (\frac{- \lambda}{2})^m \frac{1}{m!}    
+\]
+
+\[
+    P = \frac{1}{n!} \int \frac{\mathrm{d}^{3} k_{1} \cdots \mathrm{d}^{3} k_{n}}{(2 \pi)^{3 n} 2^{n} E_{\mathbf{k}_{1}} \cdots E_{\mathbf{k}_{n}}} |i^n \tilde{j}(k_1) ... \tilde{j}(k_n) e^{-\frac{\lambda}{2}}|^2 = \frac{\lambda^n}{n!} e^{-\lambda}       
+\]
+
+~\\
+\noindent (e)
+
+\[
+    \Sigma_{n=0}^{\infty} P(n) = \Sigma_{n=0}^{\infty} \frac{\lambda^n}{n!} \cdot \exp(-\lambda) = 1    
+\]
+
+\[
+    \Sigma_{n=0}^{\infty} n P(n) = \Sigma_{n=1}^{\infty} n P(n) = \lambda \exp(-\lambda) \Sigma_{n=1}^{\infty} \frac{\lambda^{n-1}}{(n-1)!} = \lambda       
+\]
+
+from the above equation,
+
+\[
+    \Sigma_{n=1}^{\infty} \frac{n \lambda^n}{n!} = \lambda \cdot e^{\lambda}    
+\]
+
+apply $\lambda \frac{d}{d \lambda}$ to both sides, then we get 
+
+\[
+    \Sigma_{n=1}^{\infty} \frac{n^2 \lambda^n}{n!} = (\lambda^2 + \lambda) \cdot e^{\lambda}      
+\]
+
+\[
+    <(N - <N>)^2> = (\lambda^2 + \lambda) - \lambda^2 = \lambda    
+\]
+
+\section{Problem 4.2}
+
+The decay process is $\Phi \to \phi + \phi$, lifetime of $\Phi$ is $\tau = \frac{1}{\Gamma}$, $\Gamma = \int d\Gamma$.
+
+\noindent From (4.86), we know the decay rate formula,
+\[
+    \int \mathrm{d} \Gamma=\frac{1}{2 M} \int \frac{\mathrm{d}^{3} p_{1} \mathrm{~d}^{3} p_{2}}{(2 \pi)^{6}} \frac{1}{4 E_{\mathbf{p}_{1}} E_{\mathbf{p}_{2}}}\left|\mathcal{M}\left(\Phi(0) \rightarrow \phi\left(p_{1}\right) \phi\left(p_{2}\right)\right)\right|^{2}(2 \pi)^{4} \delta^{(4)}\left(p_{\Phi}-p_{1}-p_{2}\right)
+\]
+
+\[
+    \left\langle\mathbf{p}_{1} \mathbf{p}_{2} \cdots|S| \mathbf{k}_{\mathcal{A}} \mathbf{k}_{\mathcal{B}}\right\rangle=\lim _{T \rightarrow \infty}\left\langle\mathbf{p}_{1} \mathbf{p}_{2} \cdots\left|e^{-i H(2 T)}\right| \mathbf{k}_{\mathcal{A}} \mathbf{k}_{\mathcal{B}}\right\rangle    
+\]
+
+\[
+        \lim _{T \rightarrow \infty(1-i \epsilon)} \left(\mathbf{p}_{1} \cdots \mathbf{p}_{n}\left|e^{-i H(2 T)}\right| \mathbf{p}_{\mathcal{A}} \mathbf{p}_{\mathcal{B}}\right\rangle_{0} 
+\]
+\[
+\propto \lim _{T \rightarrow \infty(1-i \epsilon)} \ _{0}\left\langle\mathbf{p}_{1} \cdots \mathbf{p}_{n}\left|T\left(\exp \left[-i \int_{-T}^{T} d t H_{I}(t)\right]\right)\right| \mathbf{p}_{\mathcal{A}} \mathbf{p}_{\mathcal{B}}\right\rangle_{0}
+\]
+
+We know $S = i + iT$, and
+
+\[
+    \left\langle\mathbf{p}_{1} \mathbf{p}_{2} \cdots|i T| \mathbf{k}_{\mathcal{A}} \mathbf{k}_{\mathcal{B}}\right\rangle=(2 \pi)^{4} \delta^{(4)}\left(k_{\mathcal{A}}+k_{\mathcal{B}}-\sum p_{f}\right) \cdot i \mathcal{M}\left(k_{\mathcal{A}}, k_{\mathcal{B}} \rightarrow p_{f}\right)    
+\]
+
+$\Phi$ and $\phi$ are real scalar fields, so they satisfy K-G eq., with Feynman rules in P.115, we can calculate $\mathcal{M}$ by
+
+\[
+    i \mathcal{M} = ( _{0}<\phi \phi|T{ \exp(-i \int d^4 x \mu \Phi \phi \phi) }|\Phi>_{0})_{connected, amputated}
+\]
+
+$\mathcal{H}_{I} = \mu \Phi \phi \phi$, the lowest order in $\mu$ is 
+
+\[
+    i \mathcal{M} = - i \mu ( _{0}<\phi \phi|\int d^4 x (T{  \Phi \phi \phi })|\Phi>_{0})_{connected, amputated}        
+\]
+
+After contraction, 
+
+\[
+    i \mathcal{M} = - i \mu * 2 \delta(p_{\Phi}-p_{1}-p_{2})        
+\]
+
+the factor 2 is because $\phi$s have two ways of contraction, also we can calculate with Feynman rules in P.115, the diagram is one vertex with three external solid lines, here $\int d^4 x$ will also be included in the Feynman rules.
+
+the vertex is $-i \mu$, the external solid line is $1$, and because two ways of contraction refer to same diagram, there will be an extra factor $2$.
+
+With the expression of $\mathcal{M}$, we get
+
+\[
+    \Gamma=\frac{1}{2} \cdot \frac{2 \mu^{2}}{M} \int \frac{\mathrm{d}^{3} p_{1} \mathrm{~d}^{3} p_{2}}{(2 \pi)^{6}} \frac{1}{4 E_{\mathbf{p}_{1}} E_{\mathbf{p}_{2}}}(2 \pi)^{4} \delta\left(M-E_{\mathbf{p}_{1}}-E_{\mathbf{p}_{2}}\right) \delta^{(3)}\left(\mathbf{p}_{1}+\mathbf{p}_{2}\right)    
+\]
+
+the factor $\frac{1}{2}$ is accounted for the exchange of two $\phi$ in the final state. \textcolor{red}{Notice that when calculating $\mathcal{M}$/Feynman diagrams, we treat each $\phi$ operator differently.}
+
+\[
+    \Gamma=\frac{\mu^{2}}{M} \int \frac{\mathrm{d}^{3} p_{1}}{(2 \pi)^{2}} \frac{1}{4 E_{\mathbf{p}_{1}}^{2}} \delta\left(M-2 E_{\mathbf{p}_{1}}\right)=\frac{\mu^{2}}{8 \pi M}\left(1-\frac{4 m^{2}}{M^{2}}\right)^{1 / 2}    
+\]
+
+\textcolor{red}{Notice here $\delta(M - 2 E_{\mathbf{p}_1}) = \frac{1}{2} \delta(E_{\mathbf{p}_1} - \frac{M}{2})$.}
+
+\section{Problem 4.3}
+
+\noindent (a)
+Firstly, here the propagator is the contraction of two fields in the interaction picture, and when $\lambda = 0$, $H = \Sigma H_i$, so each field $\Phi^i$ satisfies K-G equation separately, the contraction is the standard K-G propagator.
+
+We have $\mathcal{H}_I = \frac{\lambda}{4} (\Sigma_i (\Phi^i)^2 )^2 = \frac{\lambda}{4} ( \Sigma_i (\Phi^i)^4 + 2 \Sigma_{i > j} (\Phi^i)^2 (\Phi^j)^2 )$, if the vertex has four same fields, then one diagram represents $4!$ contraction terms, if the vertex has two kinds of fields, then one diagram represents $2*2$ different contractions, adding the extra factor $2$ in $\mathcal{H}_I$, totally $2^3$ terms.
+
+Therefore, vertex of 4 $\Phi^i$ has value $-i \frac{\lambda}{4} * 4! = -6 i \lambda$, and vertex of 2 kinds $\Phi^i$ and $\Phi^j$ has value $-i \frac{\lambda}{4} * 2*2 * 2 = -2 i \lambda$.
+
+For $\Phi^1 \Phi^2 \to \Phi^1 \Phi^2$, to the leading order of $\lambda$,
+
+\[
+    i \mathcal{M} = \frac{-i \lambda}{4} ( _0<\Phi^1 \Phi^2|\int d^4 x ( (\Phi^1)^2 + (\Phi^2)^2 )^2|\Phi^1 \Phi^2>_0 )_{connected, amputated}    
+\]
+
+\[
+    ( (\Phi^1)^2 + (\Phi^2)^2 )^2 = \Phi^1 \Phi^1 \Phi^1 \Phi^1 + 2*\Phi^1 \Phi^1 \Phi^2 \Phi^2 + \Phi^2 \Phi^2 \Phi^2 \Phi^2       
+\]
+
+here only the mixed term survived, so $\mathcal{M} = -6 i \lambda$, the diagram is a vertex with 4 external solid lines. With Eq.(4.84)
+
+\[
+    \left(\frac{d \sigma}{d \Omega}\right)_{\mathrm{CM}}=\frac{1}{2 E_{\mathcal{A}} 2 E_{\mathcal{B}}\left|v_{\mathcal{A}}-v_{\mathcal{B}}\right|} \frac{\left|\mathbf{p}_{1}\right|}{(2 \pi)^{2} 4 E_{\mathrm{cm}}}\left|\mathcal{M}\left(p_{\mathcal{A}}, p_{\mathcal{B}} \rightarrow p_{1}, p_{2}\right)\right|^{2}    
+\]
+
+we know that $\Phi^1$ and $\Phi^2$ have same mass, if the mass is ignorable compared to $E_{c.m.}$, we have
+
+\[
+    \left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\mathrm{CM}}=\frac{|\mathcal{M}|^{2}}{64 \pi^{2} E_{c.m.}} = \frac{9 \lambda^2}{16 \pi^2 E_{c.m.}}    
+\]
+
+Same thing for other two decay channels.
+
+~\\
+\noindent (b)
+
+Because of the rotation symmetry of $\vec{\Phi}$, we can assume when $\vec{\Phi} = (\Phi^i = 0, \Phi^N = v)$, the potential energy $V = V_{min} = -\frac{1}{2} \mu^2 \nu^2 + \frac{\lambda}{4} \nu^4$, the derivative $\frac{\partial V}{\partial \nu} = \nu (\lambda \nu^2 - \mu^2) = 0$, so we get $\nu = \frac{\mu}{\sqrt{\lambda}}$.
+
+Apply the new coordinates $\Phi^i = \pi^i$ and $\Phi^N = \nu + \sigma$, plus $\Pi^i = \dot{\Phi}^i $, we can get the Lagrangian density,
+
+\[
+    \mathcal{L}=\frac{1}{2}\left(\partial_{\mu} \pi^{k}\right)^{2}+\frac{1}{2}\left(\partial_{\mu} \sigma\right)^{2}-\frac{1}{2}\left(2 \mu^{2}\right) \sigma^{2}-\sqrt{\lambda} \mu \sigma^{3}-\sqrt{\lambda} \mu \sigma \pi^{k} \pi^{k} -\frac{\lambda}{4} \sigma^{4}-\frac{\lambda}{2} \sigma^{2}\left(\pi^{k} \pi^{k}\right)-\frac{\lambda}{4}\left(\pi^{k} \pi^{k}\right)^{2}
+\]
+
+from the above equation, we can find that $\pi^k$ are $N-1$ massless K-G fields, $\sigma$ is a K-G field with mass $\sqrt{2} \nu$, their propagators have the same form as the K-G propagator.
+
+$\sigma$ field propagator:
+
+\[
+    \frac{i}{k^2 - 2\nu^2 +i \epsilon}
+\]
+
+$\pi^k$ field propagator:
+
+\[
+    \frac{i \delta_{ij}}{k^2 + i \epsilon}    
+\]
+
+vertex of $3$ $\sigma$ fields:
+
+\[
+    - 6 i \sqrt{\lambda} \mu = - 6 i \lambda \nu    
+\]
+
+factor $6$ is because the exchange of $3$ $\sigma$.
+
+vertex of $\sigma$, $\pi^i$ and $\pi^j$:
+
+\[
+    - 2 i \sqrt{\lambda} \mu \delta_{ij} = - 2 i \lambda \nu \delta_{ij}
+\]
+
+factor $2$ is accounted for the exchange of two $\pi$, and $\delta_{ij}$ is accounted for $\pi^k \pi^k = \Sigma_{i = 1}^{N-1} (\pi^i)^2 $.
+
+Other Feynman rules are same things.
+
+
+
+
+\end{document}
