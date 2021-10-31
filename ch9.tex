@@ -1,0 +1,201 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\usepackage{cancel}
+\usepackage[compat=1.0.0]{tikz-feynman} % Feynman diagram
+
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Peskin Solutions: Chapter 9}
+\author{Jinchen}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Problem 9.1}
+
+\noindent (a)
+
+\[
+    \mathcal{L} = - \frac{1}{4} F^2_{\mu \nu} + (\partial_{\mu} \phi^* - i e A_{\mu} \phi^*)(\partial^{\mu} \phi + i e A^{\mu} \phi) - m^2 \phi^* \phi = \mathcal{L}_{A} + \mathcal{L}_{\phi} + \mathcal{L}_{I}
+\]
+
+The $\mathcal{L}_{A}$ is just free E-M field, so the propogator is the propogator of photon. 
+
+The $\mathcal{L}_{\phi} = \partial_{\mu} \phi^* \partial^{\mu} \phi - m^2 \phi^* \phi = \partial_{\mu} (\phi^* \partial^{\mu} \phi) - \phi^* \partial_{\mu} (\partial^{\mu} \phi) - m^2 \phi^* \phi$, because the differential term in the Lagrangian density makes no difference, we got $\mathcal{L}_{\phi} = - \phi^* \partial_{\mu} (\partial^{\mu} \phi) - m^2 \phi^* \phi = \phi^* (- \partial^2 - m^2) \phi = \phi^* \hat{T} \phi$.
+
+With generating functional method, we have $\mathcal{L}_{\phi} + \eta^* \phi + \phi^* \eta$ in the $Z[J]$, then do a shift $\phi \to \phi' = \phi + \hat{T}^{-1} \eta$, we got $\mathcal{L}_{\phi} + \eta^* \phi + \phi^* \eta = \mathcal{L}_{\phi'} - \eta^* \hat{T}^{-1} \eta$. If $G$ is the Green function of $\hat{T}$, then $\mathcal{L}_{\phi'} - \eta^* \hat{T}^{-1} \eta = \mathcal{L}_{\phi'} - \eta^* G * \eta$, after two functional derivatives, we will find the propogator is exactly the $G$.
+
+So the propogator of $\phi$ and $\phi^*$ is $\frac{i}{p^2 - m^2 + i \epsilon}$. (How to calculate the Green function of $\hat{T}$? - Check Eq.(2.57) in Peskin)
+
+Then comes to the vertex, $\mathcal{H}_{I} = - \mathcal{L}_I$ (P. 289 in Peskin), theoretically we should check Eq.(4.31) and do the contraction to get Feynman rules, but here we can just look at $exp[i \int \mathcal{L}_I]$, here $\mathcal{L}_I = i e g^{\mu \nu} (\partial_{\mu} \phi^* A_{\nu} \phi - A_{\mu} \phi^* \partial_{\nu} \phi) + e^2 g^{\mu \nu} A_{\mu} \phi^* A_{\nu} \phi$, then $i \mathcal{L}_I = i * i * i e g^{\mu \nu} (-i \partial_{\mu} \phi^* A_{\nu} \phi + A_{\mu} \phi^* i \partial_{\nu} \phi) + i e^2 g^{\mu \nu} A_{\mu} \phi^* A_{\nu} \phi$.
+
+There are three terms, let's throw those fields away and turn $i \partial \phi$ to $p_{\phi} \phi$, $-i \partial \phi^*$ to $p_{\phi^*} \phi^*$, here $p$s are along particle/anti-particle lines, besides, the third term has two $A$ fields, which are commutative, so there should be a factor $2$ for the $AA\phi^*\phi$ vertex.
+
+So, 
+
+\[For\ \phi^* A \phi: -i e (p + p')^{\mu}\]
+
+\[For\ AA\phi^* \phi: 2 i e^2 g^{\mu \nu}\]
+
+
+Theoretically, 
+
+\[ <\phi \phi^* | S | \gamma> = <\phi \phi^* | T \int d^4 x i \mathcal{L}_I | \gamma> = <\phi \phi^* | T \int d^4 x (-i e) g^{\mu \nu} (-i \partial_{\mu} \phi^* A_{\nu} \phi + A_{\mu} \phi^* i \partial_{\nu} \phi) | \gamma> \]
+
+and 
+
+\[ <\phi \phi^* | S | \gamma \gamma> = <\phi \phi^* | T \int d^4 x i \mathcal{L}_I | \gamma \gamma> = <\phi \phi^* | T \int d^4 x (i e^2) g^{\mu \nu} A_{\mu} \phi^* A_{\nu} \phi | \gamma \gamma> \]
+
+give the Feynman rules of two kinds of vertex with contraction.
+
+
+~\\
+\noindent (b)
+
+With Eq.(4.84), $m_e$ is ignored, then,
+
+\[(\frac{d \sigma}{d \Omega})_{c.m.} = \frac{|\vec{p}_{\phi}|}{32 (2\pi)^2 E_{e}^2 \cdot 2 E_e } \frac{1}{4} \Sigma |\mathcal{M}(ee \to \phi^*\phi)|^2\]
+
+The outlines of $\phi$ and $\phi^*$ are $1$, the Feynman diagram looks similar to the diagram in P.131.
+
+\[ i \mathcal{M} = (-i e)^2 \bar{v}(k_2) \gamma^{\mu} u(k_1) \frac{-i g_{\mu \nu}}{s + i \epsilon} (p_1 - p_2)^{\nu} = i e^2 \bar{v}(k_2) (\cancel{p_1} - \cancel{p_2}) u(k_1) \frac{1}{s + i \epsilon}\]
+
+\[\frac{1}{4} \Sigma_{spin} |\mathcal{M}|^2 = \Sigma_{spin} \frac{e^4}{4 s^2} \bar{v}(k_2) (\cancel{p_1} - \cancel{p_2}) u(k_1) \bar{u}(k_1) (\cancel{p_1} - \cancel{p_2}) v(k_2) \]
+
+\[ = \Sigma_{spin} \frac{e^4}{4 s^2} tr( v(k_2) \bar{v}(k_2) (\cancel{p_1} - \cancel{p_2}) u(k_1) \bar{u}(k_1) (\cancel{p_1} - \cancel{p_2}) ) \]
+
+\[ = \frac{e^4}{4 s^2} tr( \cancel{k_2} (\cancel{p_1} - \cancel{p_2}) \cancel{k_1} (\cancel{p_1} - \cancel{p_2}) ) \]
+
+\[ = \frac{e^{4}}{4 s^{2}}\left[8\left(k_{1} \cdot p_{1}-k_{1} \cdot p_{2}\right)\left(k_{2} \cdot p_{1}-k_{2} \cdot p_{2}\right)-4\left(k_{1} \cdot k_{2}\right)\left(p_{1}-p_{2}\right)^{2}\right] \]
+
+Choose a specific frame, 
+
+\[ k_{1}=(E, 0,0, E), \ \  p_{1}=(E, p \sin \theta, 0, p \cos \theta) \]
+
+\[k_{2}=(E, 0,0,-E), \ \  p_{2}=(E,-p \sin \theta, 0,-p \cos \theta)\]
+
+\[ \frac{1}{4} \Sigma_{spin} |\mathcal{M}|^2 = \frac{e^{4} p^{2}}{2 E^{2}} \sin ^{2} \theta \]
+
+$ee \to \mu \mu$ is Eq.(5.11)
+
+So,
+
+\[
+    \left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\mathrm{CM}}=\frac{1}{2(2 E)^{2}} \frac{p}{8(2 \pi)^{2} E}\left(\frac{1}{4} \sum|\mathcal{M}|^{2}\right)=\frac{\alpha^{2}}{8 s}\left(1-\frac{m^{2}}{E^{2}}\right)^{3 / 2} \sin ^{2} \theta 
+\]
+
+~\\
+\noindent (c)
+
+Two diagrams because there are two kinds of vertex which are listed in (a). Because the sign in the $\mathcal{L}_I$ between two vertex terms is $+$, the order of fermion fields in the $<|S|>$ expression are same, which is $< |\phi^* \phi| >$, so the two diagrams should be added.
+
+
+\[ i \Pi^{\mu \nu}_1 = e^2 \int \frac{d^4 k}{(2\pi)^4} (2k + q)^{\mu} \frac{1}{k^2 - m^2 + i \epsilon} (2k+q)^{\nu} \frac{1}{(k+q)^2 - m^2 + i \epsilon} \]
+
+\[ i \Pi^{\mu \nu}_2 = - 2 e^2 g^{\mu \nu} \int \frac{d^4 k}{(2 \pi)^4} \frac{1}{(k+q)^2 - m^2 + i \epsilon} \]
+
+add togeter, get
+
+\[ i \Pi^{\mu \nu} = - e^2 \int \frac{d^4 k}{(2\pi)^4} \frac{2 g^{\mu \nu} (k^2 - m^2) - (2k + q)^{\mu} (2k+q)^{\nu}}{(k^2 - m^2)((k+q)^2 - m^2)} \]
+
+\[ \frac{1}{(k^2 - m^2)((k+q)^2 - m^2)} = \int^1_0 dx \frac{1}{[(k + (1-x)q)^2 + xq^2 -x^2 q^2 - m^2]^2} \]
+
+change the variable, $l = k + (1-x)q$, with Eq.(6.45),
+
+\[ numerator = g^{\mu \nu} l^2 + 2 g^{\mu \nu} (1-x)^2 q^2 - 2 g^{\mu \nu} m^2 - (2x-1)^2 q^\mu q^\nu \]
+
+do the Wick rotation, $l^0 = i l^0_E$ and $l^i = l^i_E$, so we have $d^4 l = i d^4 l_E$ and $l^2 = - l^2_E$,
+
+\[ i \Pi^{\mu \nu} = -i e^2 \int^1_0 dx \int \frac{d^4 l_E}{(2\pi)^4} \frac{-g^{\mu \nu} l_E^2 + 2 g^{\mu \nu} (1-x)^2 q^2 - 2 g^{\mu \nu} m^2 - (2x-1)^2 q^\mu q^\nu}{[l_E^2 + m^2 + x^2q^2 - xq^2]^2 } \]
+
+\[= -i e^2 \int^1_0 dx \int \frac{d^4 l_E}{(2\pi)^4} [\frac{-g^{\mu \nu} l_E^2}{(l_E^2 + \Delta)^2} + \frac{2 g^{\mu \nu} (1-x)^2 q^2 - 2 g^{\mu \nu} m^2 - (2x-1)^2 q^\mu q^\nu}{(l_E^2 + \Delta)^2}] \]
+
+use dimensional regularization, with Eq.(7.85) and Eq.(7.86),
+
+\[ i \Pi^{\mu \nu} = -i e^2 \int^1_0 dx [ (2 g^{\mu \nu} (1-x)^2 q^2 - 2 g^{\mu \nu} m^2 - (2x-1)^2 q^\mu q^\nu) \frac{1}{(4 \pi)^{d / 2}} \frac{\Gamma\left(2-\frac{d}{2}\right)}{\Gamma(2)}\left(\frac{1}{\Delta}\right)^{2-\frac{d}{2}} \]
+
+\[ - g^{\mu \nu} \frac{1}{(4 \pi)^{d / 2}} \frac{d}{2} \frac{\Gamma\left(2-\frac{d}{2}-1\right)}{\Gamma(2)}\left(\frac{1}{\Delta}\right)^{2-\frac{d}{2}-1} ] \]
+
+\[ = -i e^2 \int_0^1 dx \frac{1}{(4\pi)^{d/2}} (\frac{1}{\Delta})^{2-d/2} \Gamma(2-d/2) [ (2 g^{\mu \nu} (1-x)^2 q^2 - (2x-1)^2 q^\mu q^\nu) - g^{\mu \nu} \frac{d}{2-d} (x^2 q^2 - x q^2) ] \]
+
+set $d = 4-\epsilon$ with $\epsilon \to 0$,
+
+\[ i \Pi^{\mu \nu} = \frac{-i e^2}{(4\pi)^{2}} \int_0^1 dx  (\frac{\epsilon}{2} -log\Delta - \gamma + log(4\pi)) [ (g^{\mu \nu} (2x-2)(2x-1) q^2 - (2x-1)^2 q^\mu q^\nu) ] \]
+
+Because $\int_0^1 dx  (\frac{2}{\epsilon} -log\Delta - \gamma + log(4\pi)) (2x-1) = \int_0^1 dx  \frac{2}{\epsilon} (2x-1) = 0$, we have
+
+\[ i \Pi^{\mu \nu} = \frac{-i e^2}{(4\pi)^{2}} \int_0^1 dx  (\frac{\epsilon}{2} -log\Delta - \gamma + log(4\pi)) (2x-1)^2 [ (g^{\mu \nu} q^2 - q^\mu q^\nu) ] \]
+
+with MS-bar scheme,
+
+\[ \Pi(q^2) = \frac{-\alpha}{4\pi} \int_0^1 dx  (-log\Delta ) (2x-1)^2 \]
+
+If we adopt $-q^2 >> m^2$, 
+
+\[ \Pi(q^2) = \frac{-\alpha}{4\pi} \int_0^1 dx  (-log(x - x^2) - log(-q^2) ) (2x-1)^2  \to \frac{-\alpha}{12 \pi} log(-q^2)\]
+
+while looking at Eq.(7.90), $\int_0^1 dx x(1-x) = \frac{1}{6}$, we know for $e+e-$ pair,
+
+\[ \Pi(q^2) \to \frac{-\alpha}{3 \pi} log(-q^2) \]
+
+which is four times as our results.
+
+
+\section{Problem 9.1}
+
+\noindent (a)
+
+\end{document}
