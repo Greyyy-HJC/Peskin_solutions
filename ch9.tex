@@ -180,8 +180,34 @@ which is four times as our results.
 
 \noindent (a)
 
+In Ch.9.1, because of superposition principle, the  we have 
+\[ U\left(x_{a}, x_{b} ; T\right)=\sum_{\text {all paths }} e^{i \cdot(\text { phase })}=\int \mathcal{D} x(t) e^{i \cdot(\text { phase })} \]
+\[ \left\langle x_{b}\left|e^{-i H T / \hbar}\right| x_{a}\right\rangle=U\left(x_{a}, x_{b} ; T\right)=\int \mathcal{D} x(t) e^{i S[x(t)] / \hbar} \]
 
+Here if we treat $H$ as a matrix in the linear space constructed by eigenstates $\left. | q \right\rangle$, the trace can be rewritten as $Z = \int d^d q \left\langle q | e^{-\beta H} | q \right\rangle$. \red{However, we do not know how to write it as a functional integral yet because we do not know what is the "action" here.}
 
+It is true that you can use eigenstates $| p \rangle$ to write $Z = \int \frac{d^d p}{(2\pi)^d} \left\langle p | e^{-\beta H} | p \right\rangle$, but you will meet $\langle p_2 | \hat{x} | p_1 \rangle = \int d^d q \ e^{-i (p_2 - p_1)q} \cdot q$
+
+Recall the equations about location and momentum eigenstates,
+\[ 1=\int \mathrm{d}^{d} q|q\rangle\langle q|=\int \frac{\mathrm{d}^{d} p}{(2 \pi)^{d}}|p\rangle\langle p| \]
+\[ |q\rangle = \int \frac{\mathrm{d}^{d} p}{(2 \pi)^{d}} e^{-i p \cdot q} |p\rangle \]
+\[ \langle p|q\rangle = e^{-i p \cdot q} \].
+
+Then we suppose that $H = \frac{p^2}{2m} + V(q)$, and separate $Z$ as
+
+\[ e^{- \beta H} = e^{-\epsilon H} \cdot e^{-\epsilon H} \dots \]
+\[ Z = \int d^d q (\prod_{j=1}^{N-1} \int d^d q_j )  \langle q | e^{-\epsilon H} | q_{N-1} \rangle \dots \langle q_{i+1} | e^{-\epsilon H} | q_{i} \rangle \dots \langle q_{1} | e^{-\epsilon H} | q \rangle \]
+
+\[ \langle q_{i+1} | e^{-\epsilon H} | q_{i} \rangle = e^{-\epsilon V(q_i)} \langle q_{i+1} | e^{-\epsilon \frac{p^2}{2m}} | q_{i} \rangle = e^{-\epsilon V(q_i)} \int \frac{\mathrm{d}^{d} p_i}{(2 \pi)^{d}} \frac{\mathrm{d}^{d} p_{i+1}}{(2 \pi)^{d}}  \langle q_{i+1} | p_{i+1} \rangle \langle p_{i+1} | e^{-\epsilon \frac{p^2}{2m}} | p_i \rangle \langle p_i | q_{i} \rangle  \]
+\[ = e^{-\epsilon V(q_i)} \int \frac{\mathrm{d}^{d} p_i}{(2 \pi)^{d}} \langle q_{i+1} | p_{i} \rangle e^{-\epsilon \frac{p_i^2}{2m}} \langle p_i | q_{i} \rangle = e^{-\epsilon V(q_i)} \int \frac{\mathrm{d}^{d} p_i}{(2 \pi)^{d}} e^{i p_i \cdot (q_{i+1} - q_i)} \cdot e^{-\epsilon \frac{p_i^2}{2m}} \]
+\[ = \left[\frac{m}{2 \pi \epsilon}\right]^{d / 2} e^{-m\left(q_{i+1}-q_{i}\right)^{2} / 2 \epsilon} \cdot e^{-\epsilon V(q_i)} \]
+here we can find that $q \to q_1 \to \dots \to q_{N-1} \to q$ is a loop route, so we set $q_0 = q_N = q$ and we multiply all terms together to get
+\[ Z=\left[\frac{m}{2 \pi \epsilon}\right]^{N d / 2} \prod_{i=0}^{N-1} \int \mathrm{d}^{d} q_{i} \exp \left[-\frac{m\left(q_{i+1}-q_{i}\right)^{2}}{2 \epsilon}-\epsilon V\left(q_{i}\right)\right] \]
+\[=\left[\frac{m}{2 \pi \epsilon}\right]^{N d / 2} (\prod_{i=0}^{N-1} \int \mathrm{d}^{d} q_{i}) \exp \left[-\beta \sum_{i=0}^{N-1} \frac{1}{N} ( \frac{m\left(q_{i+1}-q_{i}\right)^{2}}{2 \epsilon^2} + V\left(q_{i}\right))\right]\]
+
+When $N \to \infty$, define $\int \mathcal{D} q = \lim_{N\to \infty} ( \left[\frac{m}{2 \pi \epsilon}\right]^{N d / 2} (\prod_{i=0}^{N-1} \int \mathrm{d}^{d} q_{i}) ) $, so we get
+\[ Z = \int \mathcal{D} q \exp[-\beta \oint dt L_E[q(t)]] \]
+\[ L_E[q(t)] = \frac{m}{2} (\frac{dq}{dt})^2 + V(q(t)) \]
 
 
 
